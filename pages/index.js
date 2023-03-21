@@ -15,10 +15,10 @@ export default function Home({ movies }) {
         <title>Video Streaming with Hygraph</title>
       </Head>
       
-        <VideoPlayer />
-        
+                
           {movies.map((movie) => (
           <div className="text-sm">
+          <VideoPlayer title={movie.omdbMD.Title} />
           <p>Movie Title: {movie.omdbMD.Title}</p>
           <p>Year: {movie.omdbMD.Title}</p>  
           <p>
