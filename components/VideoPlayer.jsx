@@ -13,10 +13,12 @@ const cld = new Cloudinary({
 
 ; 
 
-const VIDEO_PATH = cld.video("Blade_Runner").toURL().toString();
 
-function VideoPlayer() {
-   return (     
+
+function VideoPlayer(title) {
+  
+  const VIDEO_PATH = cld.video('movies/'+ title.title).toURL().toString();
+    return (     
     <video width="320" height="240" controls>
             <source src={VIDEO_PATH} type="video/mp4"/>
     </video>
