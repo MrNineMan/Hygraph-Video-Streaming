@@ -1,10 +1,9 @@
-import VideoPlayer from "Next/components/VideoPlayer";
 import Head from "next/head";
 import React, { StrictMode } from 'react';
 /*
  * Add necessary hygraph and GraphQL imports
 */
-import hygraph from "../graphql";
+import hygraph from "Next/graphql";
 import { gql } from "graphql-request";
 
 
@@ -18,9 +17,13 @@ export default function Home({ movies }) {
                 
           {movies.map((movie) => (
           <div className="text-sm">
-          <VideoPlayer title={movie.omdbMD.Title} />
+          
+          <video width="320" height="240" controls>
+            <source src= {movie.cloudinaryVideoLibrary.url} type="video/mp4"/>
+            Your browser does not support the video tag.
+          </video>
           <p>Movie Title: {movie.omdbMD.Title}</p>
-          <p>Year: {movie.omdbMD.Title}</p>  
+          <p>Year: {movie.omdbMD.Year}</p>  
           <p>
             Plot Summary: {movie.omdbMD.Plot}
           </p>
@@ -42,9 +45,8 @@ export async function getStaticProps() {
 {
   movies {
   
-    title
-    year
   	omdbMD
+    cloudinaryVideoLibrary
   }
 }
   
