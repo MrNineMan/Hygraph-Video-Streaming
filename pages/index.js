@@ -15,8 +15,8 @@ export default function Home({ movies }) {
       </Head>
       
                 
-          {movies.map((movie) => (
-          <div className="text-sm">
+      {movies.map((movie, index) => (
+        <div className="text-sm" key={index}>
           
           <video width="320" height="240" controls>
             <source src= {movie.cloudinaryVideoLibrary.url} type="video/mp4"/>
